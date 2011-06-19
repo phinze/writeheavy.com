@@ -1,0 +1,158 @@
+---
+---
+
+/* retro */
+$lightpeach: #F2E6CE;
+$mildmint: #8AB29F;
+$lightgray: #606362;
+$racoon: #593325;
+$charcoal: #1D1D1F;
+$mint: #ADE5AA;
+
+/* MEASUREMENTS */
+
+$content-width: 72em;
+$sidebar-width: 12em;
+$sidebar-padding: 1em;
+$sidebar-border-width: 0.1em;
+
+@import "css/charcoal-noise-background";
+@import "css/lightpeach-noise-background";
+@import "css/mixins";
+
+/* GLOBAL STUFF */
+
+body { @include charcoal-noise-background; }
+a { text-decoration: none; }
+.clear { clear: both; }
+
+/* MAIN HEADER */
+
+h1 {
+  background-color: $racoon;
+  text-align: right;
+  font-size: 3.5em;
+  margin: 0.5em 0 0 0;
+  padding: 0.25em 1em;
+  font-family: 'Podkova';
+  @include inner-shadow(0px, 0px, 30px, lighten($racoon, 30%));
+  a {
+    color: $mint;
+  }
+}
+
+/* POST HEADER */
+
+h2 {
+  background-color: $mint;
+  padding: 0.75em;
+  font-size: 2.5em;
+  font-family: 'Podkova';
+  @include inner-shadow(0px, 0px, 30px, darken($mildmint, 30%));
+  a { color: $charcoal; }
+}
+
+
+/* POST SUB-HEADER */
+
+h3 {
+  font-size: 14pt;
+  border-bottom: solid $racoon 1px;
+  padding: 0.5em;
+}
+
+/* MAIN PAGE ELEMENTS */
+
+#parappa {
+  width: $content-width;
+  margin: 0 auto;
+}
+
+#contentisking {
+  font-family: 'Nobile', sans-serif;
+  margin-right: $sidebar-width + ($sidebar-padding * 2) + ($sidebar-border-width * 2);
+  padding-bottom: 2em;
+  @include lightpeach-noise-background;
+
+  #post {
+    font-size: 10pt;
+  }
+
+  .date {
+    float: right;
+    padding: 1em;
+    font-size: 75%;
+    position: relative; top: -3em;
+
+  }
+
+  .postcontent {
+    margin: 1em;
+  }
+
+  p {
+    line-height: 2em;
+
+    code {
+      padding: 0 0.2em;
+    }
+  }
+}
+
+#sideaction {
+  float: right;
+  width: $sidebar-width;
+
+  color: white;
+
+  padding: $sidebar-padding;
+
+  font-family: 'Nobile', sans-serif;
+
+  h4 {
+    padding: 0.5em 0;
+  }
+
+  p {
+    font-size: 8pt;
+    line-height: 1.4em;
+  }
+
+  a {
+    color: $mildmint;
+  }
+
+  img {
+    display: block;
+  }
+}
+
+
+code {
+  font-family: 'Cousine', monospace;
+}
+
+.highlight pre {
+  overflow-x: hidden;
+}
+
+.code-attribution {
+  background-color: lighten($lightpeach, 8%);
+  text-align: right;
+  display: block;
+  float: right;
+  color: $mildmint;
+  font-size: 0.8em;
+
+  &:hover {
+    color: darken($mildmint, 20%);
+  }
+}
+
+pre {
+  @include rounded(10px, 10px, 10px, 10px);
+  @include inner-shadow(0.2em, 0.2em, 0.1em);
+  line-height: 1.3em;
+  padding: 1em;
+  background-color: lighten($lightpeach, 8%);
+}

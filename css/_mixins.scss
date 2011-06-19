@@ -1,0 +1,19 @@
+@mixin rounded($top: 10px, $left: 10px, $bottom: 10px, $right: 10px) {
+   border-radius: $top $left $bottom $right;
+   -moz-border-radius: $top $left $bottom $right;
+   -webkit-border-radius: $top $left $bottom $right;
+}
+
+@mixin inner-shadow($hoffset: 0px, $voffset: 0px, $blur: 30px, $color: $charcoal) {
+  -moz-box-shadow: inset $hoffset $voffset $blur $color;
+  -webkit-box-shadow: inset $hoffset $voffset $blur $color;
+  box-shadow: inset $hoffset $voffset $blur $color;
+}
+
+@mixin outer-shadow($hoffset: 0px, $voffset: 0px, $blur: 30px, $color: $charcoal) {
+  -moz-box-shadow: $hoffset $voffset $blur $color;
+  -webkit-box-shadow: $hoffset $voffset $blur $color;
+  box-shadow: $hoffset $voffset $blur $color;
+}
+
+

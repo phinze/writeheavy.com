@@ -1,0 +1,12 @@
+---
+layout: base
+---
+
+<div class="post">
+  <h2><a href="{{ page.url }}">{{ page.title }}</a></h2>
+  <div class="date">published {{ page.date | date_to_string }}</div>
+  <div class="postcontent">
+  {{ content }}
+  </div>
+  <hr />
+</div>

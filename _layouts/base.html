@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+ 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+  <link href='http://fonts.googleapis.com/css?family=Nobile' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Podkova' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Cousine' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" type="text/css" href="/css/reset.css" />
+  <link rel="stylesheet" type="text/css" href="/css/syntax.css" />
+  <link rel="stylesheet" type="text/css" href="/css/pygments-css/native.css" />
+  <link rel="stylesheet" type="text/css" href="/css/webestylin.css" />
+
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.highlight pre').toggle(function(event) {
+        var codeBlock = $(event.target);
+        codeBlock.data('originalWidth', codeBlock.width());
+        codeBlock.animate({width: 1000});
+      },
+      function(event) {
+        var codeBlock = $(event.target);
+        codeBlock.animate({width: codeBlock.data('originalWidth')});
+      }
+      );
+    });
+  </script>
+
+  <title>writeheavy</title>
+</head>
+<body>
+
+<h1><a href="/">writeheavy</a></h1>
+<div id="parappa">
+  <div id="sideaction">
+    <img src="http://www.gravatar.com/avatar/0af787d46e04d47117e6cf140fd19332.png?s=150" alt="moi" />
+    <h4>Who?</h4>
+    <p>I'm Paul Hinze.  I live in Chicago.  I'm a developer at <a href="http://braintreepayments.com">Braintree</a>.</p>
+  </div>
+  <div id="contentisking">
+    {{ content }}
+  </div>
+  <div class="clear"></div>
+</div>
+
+</body>
+</html>
