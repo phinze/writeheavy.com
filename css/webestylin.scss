@@ -1,20 +1,28 @@
 ---
 ---
 
-/* retro */
+/* colors */
+
+$charcoal: #1D1D1F;
+$lightgray: #606362;
 $lightpeach: #F2E6CE;
 $mildmint: #8AB29F;
-$lightgray: #606362;
-$racoon: #593325;
-$charcoal: #1D1D1F;
 $mint: #ADE5AA;
+$racoon: #593325;
 
-/* MEASUREMENTS */
+/* measurements */
 
+$content-block-element-margin: 0 0 1em 0;
 $content-width: 72em;
-$sidebar-width: 12em;
-$sidebar-padding: 1em;
 $sidebar-border-width: 0.1em;
+$sidebar-padding: 1em;
+$sidebar-width: 12em;
+
+/* fonts */
+$content-font: 'Nobile', sans-serif;
+$main-header-font: 'Podkova';
+$sub-header-font: $content-font;
+$code-font: 'Cousine', monospace;
 
 @import "css/charcoal-noise-background";
 @import "css/lightpeach-noise-background";
@@ -22,137 +30,113 @@ $sidebar-border-width: 0.1em;
 
 /* GLOBAL STUFF */
 
-body { @include charcoal-noise-background; }
 a { text-decoration: none; }
+code { font-family: $code-font; }
 .clear { clear: both; }
+
+body { @include charcoal-noise-background; }
 
 /* MAIN HEADER */
 
 h1 {
+  @include inner-shadow(0px, 0px, 30px, lighten($racoon, 30%));
+  a { color: $mint; }
   background-color: $racoon;
-  text-align: right;
+  font-family: $main-header-font;
   font-size: 3.5em;
   margin: 0.5em 0 0 0;
   padding: 0.25em 1em;
-  font-family: 'Podkova';
-  @include inner-shadow(0px, 0px, 30px, lighten($racoon, 30%));
-  a {
-    color: $mint;
-  }
-}
-
-/* POST HEADER */
-
-h2 {
-  background-color: $mint;
-  padding: 0.75em;
-  font-size: 2.5em;
-  font-family: 'Podkova';
-  @include inner-shadow(0px, 0px, 30px, darken($mildmint, 30%));
-  a { color: $charcoal; }
-}
-
-
-/* POST SUB-HEADER */
-
-h3 {
-  font-size: 14pt;
-  border-bottom: solid $racoon 1px;
-  padding: 0.5em;
+  text-align: right;
 }
 
 /* MAIN PAGE ELEMENTS */
 
 #parappa {
-  width: $content-width;
   margin: 0 auto;
-}
+  width: $content-width;
 
-#contentisking {
-  font-family: 'Nobile', sans-serif;
-  margin-right: $sidebar-width + ($sidebar-padding * 2) + ($sidebar-border-width * 2);
-  padding-bottom: 2em;
-  @include lightpeach-noise-background;
+  #contentisking {
+    @include lightpeach-noise-background;
+    font-family: $content-font;
+    margin-right: $sidebar-width + ($sidebar-padding * 2) + ($sidebar-border-width * 2);
+    padding-bottom: 2em;
 
-  #post {
-    font-size: 10pt;
+    .post {
+      font-size: 10pt;
+
+      h2 { /* post title */
+        @include inner-shadow(0px, 0px, 30px, darken($mildmint, 30%));
+        a { color: $charcoal; }
+        background-color: $mint;
+        font-family: $main-header-font;
+        font-size: 2.5em;
+        padding: 0.75em;
+      }
+
+      .date { /* post "published on" sub-header */
+        float: right;
+        font-size: 75%;
+        padding: 1em;
+        position: relative; top: -3em;
+      }
+
+      .postcontent {
+        margin: 1em;
+
+        h3 { /* post content sub-header */
+          border-bottom: solid $racoon 1px;
+          font-size: 14pt;
+          margin: $content-block-element-margin;
+          padding: 0.5em;
+        }
+
+        p {
+          line-height: 2em;
+          code { padding: 0 0.2em; } /* inline references to variables and such */
+        }
+
+        .highlight pre {
+          overflow-x: hidden;
+        }
+
+        .code-attribution {
+          background-color: lighten($lightpeach, 8%);
+          color: $mildmint;
+
+          text-align: right;
+          display: block;
+          float: right;
+          font-size: 0.8em;
+
+          &:hover { color: darken($mildmint, 20%); }
+        }
+
+        pre {
+          @include rounded(10px, 10px, 10px, 10px);
+          @include inner-shadow(0.2em, 0.2em, 0.1em, $lightgray);
+          line-height: 1.3em;
+          padding: 1em;
+          background-color: lighten($lightpeach, 8%);
+        }
+      }
+    }
   }
 
-  .date {
+  #sideaction { /* "about me" sidebar */
+    color: white;
     float: right;
-    padding: 1em;
-    font-size: 75%;
-    position: relative; top: -3em;
+    font-family: $content-font;
+    padding: $sidebar-padding;
+    width: $sidebar-width;
 
-  }
-
-  .postcontent {
-    margin: 1em;
-  }
-
-  p {
-    line-height: 2em;
-
-    code {
-      padding: 0 0.2em;
+    a { color: $mildmint; }
+    h4 { padding: 0.5em 0; }
+    img { display: block; }
+    p {
+      font-size: 8pt;
+      line-height: 1.4em;
     }
   }
 }
 
-#sideaction {
-  float: right;
-  width: $sidebar-width;
 
-  color: white;
-
-  padding: $sidebar-padding;
-
-  font-family: 'Nobile', sans-serif;
-
-  h4 {
-    padding: 0.5em 0;
-  }
-
-  p {
-    font-size: 8pt;
-    line-height: 1.4em;
-  }
-
-  a {
-    color: $mildmint;
-  }
-
-  img {
-    display: block;
-  }
-}
-
-
-code {
-  font-family: 'Cousine', monospace;
-}
-
-.highlight pre {
-  overflow-x: hidden;
-}
-
-.code-attribution {
-  background-color: lighten($lightpeach, 8%);
-  text-align: right;
-  display: block;
-  float: right;
-  color: $mildmint;
-  font-size: 0.8em;
-
-  &:hover {
-    color: darken($mildmint, 20%);
-  }
-}
-
-pre {
-  @include rounded(10px, 10px, 10px, 10px);
-  @include inner-shadow(0.2em, 0.2em, 0.1em);
-  line-height: 1.3em;
-  padding: 1em;
-  background-color: lighten($lightpeach, 8%);
-}
