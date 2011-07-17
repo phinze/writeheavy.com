@@ -13,6 +13,7 @@ $racoon: #593325;
 /* measurements */
 
 $content-block-element-margin: 0 0 1em 0;
+$content-header-margin: 0 0 0.5em 0;
 $content-width: 72em;
 $sidebar-border-width: 0.1em;
 $sidebar-padding: 1em;
@@ -86,8 +87,8 @@ h1 {
         h3 { /* post content sub-header */
           border-bottom: solid $racoon 1px;
           font-size: 14pt;
-          margin: $content-block-element-margin;
-          padding: 0.5em;
+          padding: 0.5em 0;
+          margin: $content-header-margin;
         }
 
         p {
@@ -95,8 +96,20 @@ h1 {
           code { padding: 0 0.2em; } /* inline references to variables and such */
         }
 
-        .highlight pre {
+        pre, p { margin: $content-block-element-margin; }
+
+        pre {
+          @include inner-shadow(0.2em, 0.2em, 0.1em, $lightgray);
+          @include rounded(10px, 10px, 10px, 10px);
+          background-color: lighten($lightpeach, 8%);
+          line-height: 1.3em;
           overflow-x: hidden;
+          padding: 1em;
+        }
+
+        .inverse pre {
+          background-color: #404040;
+          @include inner-shadow(0.2em, 0.2em, 0.1em, $charcoal);
         }
 
         .code-attribution {
@@ -109,14 +122,6 @@ h1 {
           font-size: 0.8em;
 
           &:hover { color: darken($mildmint, 20%); }
-        }
-
-        pre {
-          @include rounded(10px, 10px, 10px, 10px);
-          @include inner-shadow(0.2em, 0.2em, 0.1em, $lightgray);
-          line-height: 1.3em;
-          padding: 1em;
-          background-color: lighten($lightpeach, 8%);
         }
       }
     }
