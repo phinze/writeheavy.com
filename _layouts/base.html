@@ -20,12 +20,12 @@
   <script type="text/javascript">
     $(document).ready(function() {
       $('.highlight pre').toggle(function(event) {
-        var codeBlock = $(event.target);
+        var codeBlock = $(this);
         codeBlock.data('originalWidth', codeBlock.width());
         codeBlock.animate({width: 1000});
       },
       function(event) {
-        var codeBlock = $(event.target);
+        var codeBlock = $(this);
         codeBlock.animate({width: codeBlock.data('originalWidth')});
       }
       );

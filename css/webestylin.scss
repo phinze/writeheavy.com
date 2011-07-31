@@ -14,10 +14,12 @@ $racoon: #593325;
 
 $content-block-element-margin: 0 0 1em 0;
 $content-header-margin: 0 0 0.5em 0;
-$content-width: 72em;
+$content-line-height: 2em;
+$content-width: 60em;
 $sidebar-border-width: 0.1em;
 $sidebar-padding: 1em;
 $sidebar-width: 12em;
+$definition-list-title-width: 4em;
 
 /* fonts */
 $content-font: 'Nobile', sans-serif;
@@ -34,6 +36,43 @@ $code-font: 'Cousine', monospace;
 a { text-decoration: none; }
 code { font-family: $code-font; }
 .clear { clear: both; }
+em { font-style: italic; }
+strong { font-weight: bold; }
+dl {
+  dt {
+    float: left;
+    clear: left;
+    font-weight: bold;
+    :after {
+      content: ":";
+    }
+    border-right: solid 1px #666;
+    line-height: 1.3em;
+    width: $definition-list-title-width;
+    text-align: center;
+  }
+  dd {
+    margin: $content-block-element-margin;
+    margin-left: $definition-list-title-width;
+    padding-left: 1em;
+    line-height: 1.3em;
+  }
+}
+
+ul {
+  margin-left: 3em;
+  list-style-type: disc;
+  li {
+    margin-bottom: 0.5em;
+  }
+}
+
+hr {
+  border: 0;
+  background-color: black;
+  height: 1px;
+  width: 80%;
+}
 
 body { @include charcoal-noise-background; }
 
@@ -44,7 +83,7 @@ h1 {
   a { color: $mint; }
   background-color: $racoon;
   font-family: $main-header-font;
-  font-size: 3.5em;
+  font-size: 4em;
   margin: 0.5em 0 0 0;
   padding: 0.25em 1em;
   text-align: right;
@@ -92,8 +131,9 @@ h1 {
         }
 
         p {
-          line-height: 2em;
-          code { padding: 0 0.2em; } /* inline references to variables and such */
+          line-height: $content-line-height;
+          code { padding: 0 0.15em; } /* inline references to variables and such */
+          a[rel="footnote"] { vertical-align: super; font-weight: bold; }
         }
 
         pre, p { margin: $content-block-element-margin; }
