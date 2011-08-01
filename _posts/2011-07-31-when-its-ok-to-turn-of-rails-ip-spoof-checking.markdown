@@ -197,7 +197,7 @@ Sally
    `remote_ip` implementation, since it will always pull from `X-Forwarded-For`.
 
 Hank
-:  And if you can turn of IP spoof checking, Rails won't blow up at the drop of a hat.
+:  And if you can turn off IP spoof checking, Rails won't blow up at the drop of a hat.
 
 Paul
 :  Awesome, so at the Rails layer we'll drop the `Client-Ip` header completely
@@ -226,6 +226,10 @@ Then we'll turn off IP spoof checking in ActionController with this line in
 {% codesnippet ruby %}
 config.action_controller.ip_spoofing_check = false
 {% endcodesnippet %}
+
+This isn't technically required, since we're stripping the header that would
+cause this check to raise an exception, but based on the boom boom policy baked
+into the check, it seems better to get the whole code path out of the way.
 
 ### The whole story, in bullet points.
 
