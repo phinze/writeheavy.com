@@ -58,10 +58,28 @@ module Jekyll
           %(<div class="inverse">#{code}</div>)
         end
       end
+
+      class ExpandoLink
+        def self.new_if_applicable(args)
+          new
+        end
+
+        def remove_arg?(arg)
+          false
+        end
+
+        def apply(code)
+          code.sub(/<div class="highlight"><pre>/, %(<div class="highlight"><pre>#{_render_link}))
+        end
+
+        def _render_link
+          %(<a class="expandolink">&gt;</a>)
+        end
+      end
     end
 
     def all_features
-      [Feature::GithubLink, Feature::InvertColors]
+      [Feature::ExpandoLink, Feature::GithubLink, Feature::InvertColors]
     end
 
     def initialize(tag_name, markup, tokens)

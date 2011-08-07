@@ -138,6 +138,20 @@ h1 {
 
         pre, p { margin: $content-block-element-margin; }
 
+        .expandolink {
+          font-size: 5em;
+          color: darken($lightpeach, 0%);
+
+          display: block;
+          float: right;
+          padding: 0.1em 0 2em $content-width;
+
+          &:hover {
+            color: darken($lightpeach, 40%);
+            cursor: pointer;
+          }
+        }
+
         pre {
           @include inner-shadow(0.2em, 0.2em, 0.1em, $lightgray);
           @include rounded(10px, 10px, 10px, 10px);

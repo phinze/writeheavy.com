@@ -17,19 +17,8 @@
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/jquery-ui.js"></script>
 
+  <script type="text/javascript" src="/js/expandolink.js"></script>
   <script type="text/javascript">
-    $(document).ready(function() {
-      $('.highlight pre').toggle(function(event) {
-        var codeBlock = $(this);
-        codeBlock.data('originalWidth', codeBlock.width());
-        codeBlock.animate({width: 1000});
-      },
-      function(event) {
-        var codeBlock = $(this);
-        codeBlock.animate({width: codeBlock.data('originalWidth')});
-      }
-      );
-    });
   </script>
 
   <title>writeheavy</title>
