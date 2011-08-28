@@ -89,6 +89,12 @@ h1 {
   text-align: right;
 }
 
+.logo {
+  display: inline-block;
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+}
+
 /* MAIN PAGE ELEMENTS */
 
 #parappa {
