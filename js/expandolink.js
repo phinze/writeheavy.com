@@ -22,6 +22,10 @@ $(window).load(function() {
     var expandoLink = $(this);
     var codeBlock = expandoLink.closest('pre');
     var hasOverflow = (codeBlock[0].scrollWidth > codeBlock.outerWidth());
-    if ( !hasOverflow ) { expandoLink.hide(); }
+    if ( hasOverflow ) {
+      codeBlock.css({'overflow-x': 'hidden'});
+    } else {
+      expandoLink.hide();
+    }
   });
 });

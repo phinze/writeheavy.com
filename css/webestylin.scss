@@ -107,6 +107,24 @@ h1 {
     margin-right: $sidebar-width + ($sidebar-padding * 2) + ($sidebar-border-width * 2);
     padding-bottom: 2em;
 
+
+    .index {
+      ul {
+        list-style-type: none;
+        margin-left: 0.4em;
+
+        li {
+          padding-top: 1.5em;
+          padding-left: 0.5em;
+        }
+
+        abbr {
+          display: block;
+          color: $lightgray;
+        }
+      }
+    }
+
     .post {
       font-size: 10pt;
 
@@ -150,7 +168,7 @@ h1 {
 
           display: block;
           float: right;
-          padding: 0.1em 0 2em $content-width;
+          padding: 0.1em 0 0 $content-width;
 
           &:hover {
             color: darken($lightpeach, 40%);
@@ -163,7 +181,7 @@ h1 {
           @include rounded(10px, 10px, 10px, 10px);
           background-color: lighten($lightpeach, 8%);
           line-height: 1.3em;
-          overflow-x: hidden;
+          overflow-x: scroll;
           padding: 1em;
         }
 
@@ -182,6 +200,15 @@ h1 {
           font-size: 0.8em;
 
           &:hover { color: darken($mildmint, 20%); }
+        }
+
+        .figure {
+          width: 10em;
+          margin: 0 auto;
+          font-size: 5em;
+          img {
+            vertical-align: middle;
+          }
         }
       }
     }

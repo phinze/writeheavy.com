@@ -61,7 +61,7 @@ module Jekyll
 
       class ExpandoLink
         def self.new_if_applicable(args)
-          new
+          new unless args.include?('noexpando')
         end
 
         def remove_arg?(arg)
