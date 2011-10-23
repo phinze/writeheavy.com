@@ -4,7 +4,15 @@ title: Re-introducing tmux to the osx clipboard
 ---
 
 __TL;DR__ - Copying text from tmux is broken in OSX.  A workaround is
-introduced along with a clean way of shimming it in to your setup.
+introduced along with a clean way of shimming it in to your setup.  Here's the
+obligatory "I don't care how it works just give me something I can blindly run
+to fix it" snippet:
+
+{% codesnippet bash invert_colors noexpando %}
+formula_url=https://raw.github.com/phinze/homebrew/tmux-macosx-pasteboard/Library/Formula/tmux-macosx-pasteboard.rb
+brew install $formula_url --wrap-executables
+{% endcodesnippet %}
+
 
 ----
 
@@ -21,7 +29,8 @@ Doing software development on an OSX machine means living with a weird set of pa
 </div>
 
 You've got your mother---Apple---all curves and style, and your father---UNIX---all
-sharp angles and beards.
+sharp angles and beards.  That penguin does look sort of uncomfortable all crammed
+in there, doesn't he?
 
 I hate it when mommy and daddy fight.  It only hurts the children, who just
 want to be able to copy text from inside a tmux session.
@@ -29,7 +38,7 @@ want to be able to copy text from inside a tmux session.
 ### What's broken
 
 If you've ever used `tmux` -- the delightful little GNU screen replacement --
-on OSX, you may have run into an annoying litlle problem.  The handy `pbcopy`
+on OSX, you may have run into an annoying little problem.  The handy `pbcopy`
 and `pbpaste` commands that normally give access to the OSX clipboard
 mysteriously stop working from within tmux.
 
@@ -39,7 +48,7 @@ made.  Annoying and inconvenient.
 
 ### Why it's broken
 
-Github user `ChrisJohnsen` has done a great job of researching and explaining
+GitHub user `ChrisJohnsen` has done a great job of researching and explaining
 what's happening here.  I will defer to [his awesome in-depth
 explanation](https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard) of both
 the problem and his solution, which is at the core of our workaround.
@@ -63,7 +72,7 @@ execute every time I made a new `tmux` window or split.  I really only want
 commands.
 
 To make this simple, I've added a `--wrap-executables` option to my formula
-which adds little shims into `/usr/local/bin` that look like this:
+which creates little shims in `/usr/local/bin` that look like this:
 
 {% codesnippet bash invert_colors noexpando %}
 #!/bin/sh
