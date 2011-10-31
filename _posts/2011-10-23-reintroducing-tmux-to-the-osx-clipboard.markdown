@@ -9,8 +9,8 @@ obligatory "I don't care how it works just give me something I can blindly run
 to fix it" snippet:
 
 {% codesnippet bash invert_colors noexpando %}
-formula_url=https://raw.github.com/phinze/homebrew/tmux-macosx-pasteboard/Library/Formula/tmux-macosx-pasteboard.rb
-brew install $formula_url --wrap-executables
+formula_url=https://raw.github.com/phinze/homebrew/tmux-macosx-pasteboard/Library/Formula/reattach-to-user-namespace.rb
+brew install $formula_url --wrap-pbcopy-and-pbpaste
 {% endcodesnippet %}
 
 
@@ -61,7 +61,7 @@ download and compile the `reattach-to-user-namespace` tool.
 You can install it like so:
 
 {% codesnippet console invert_colors noexpando %}
-phinze:~$ brew install https://raw.github.com/phinze/homebrew/tmux-macosx-pasteboard/Library/Formula/tmux-macosx-pasteboard.rb
+phinze:~$ brew install https://raw.github.com/phinze/homebrew/tmux-macosx-pasteboard/Library/Formula/reattach-to-user-namespace.rb
 {% endcodesnippet %}
 
 So ChrisJohnsen recommends setting the `reattach-to-user-namespace` command to
@@ -71,7 +71,7 @@ execute every time I made a new `tmux` window or split.  I really only want
 `pbcopy` and `pbpaste` to work again, so I'm content just wrapping those
 commands.
 
-To make this simple, I've added a `--wrap-executables` option to my formula
+To make this simple, I've added a `--wrap-pbcopy-and-pbpaste` option to my formula
 which creates little shims in `/usr/local/bin` that look like this:
 
 {% codesnippet bash invert_colors noexpando %}
@@ -86,11 +86,20 @@ reattach-to-user-namespace /usr/bin/pbpaste
 
 With these in place I'm perfectly content and back to my usual clipboard-piping ways.
 
+### What about other apps like vim?
+
+The `reattach-to-user-namespace` utility can be wrapped around any binary that
+has become lost from the OSX clipboard for the same reasons.  For example,
+wrapping this around `vim` will fix the `+` register to once again point to the
+system clipboard.  Again, you could go so far as to use `ChrisJohnsen`'s
+recommendation of wrapping all your shell sessions with the command, but I've
+found it cleaner to just apply it judiciously to the affected area.
+
 ### Inclusion in mxcl/homebrew
 
 I've got myself a pull request submitted to the homebrew project proper, hopefully
 they'll consider accepting it.  That would make installing this as easy as
-`brew install tmux-osx-pasteboard`.  It's not exactly a shoe-in for inclusion
+`brew install reattach-to-user-namespace`.  It's not exactly a shoe-in for inclusion
 in the main homebrew repository, but I've included some justification on the
 description of the pull request.
 
@@ -100,4 +109,3 @@ If you think this would be useful to you, consider posting a "+1" comment to thi
 
 However the pull request pans out, I'll keep my branch up, since I'll be using
 this workaround until a better solution turns up.
-
